@@ -19,6 +19,7 @@ namespace DiskScheduling
             values = new List<int>();
             algorithm = new FIFO();
             arguments = new Dictionary<string, int>();
+            arguments["direction"] = 1; // default direction when starting
         }
 
         /// <summary>

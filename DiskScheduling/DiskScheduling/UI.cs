@@ -89,7 +89,10 @@ namespace DiskScheduling
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
+            {
                 selected_algorithm = Scheduler.ALGORITHMS.SCAN;
+                resort();
+            }
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
