@@ -8,16 +8,9 @@ namespace DiskScheduling
 {
     internal class FIFO : IAlgorithm
     {
-        public int pop(List<int> values)
+        public void process(List<int> data)
         {
-
-            return values[0];
-
-        }
-
-        public void push(List<int> values,int val)
-        {
-            values.Add(val);
+            data.RemoveAt(0);
         }
     }
 }

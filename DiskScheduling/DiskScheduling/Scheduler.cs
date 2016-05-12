@@ -9,49 +9,85 @@ namespace DiskScheduling
     internal class Scheduler
     {
         private IAlgorithm algorithm = null;
+        private ALGORITHMS selected_algorithm = ALGORITHMS.NONE;
         private List<int> values = null;
 
         public Scheduler()
         {
             values = new List<int>();
+            algorithm = new FIFO();
+            selected_algorithm = ALGORITHMS.FIFO;
         }
 
-        public List<int> CreateProcess()
+        public enum ALGORITHMS
+        {
+            FIFO,
+            SSTF,
+            CLOOK,
+            LOOK,
+            CSCAN,
+            SCAN,
+            NONE
+        };
+
+        public List<int> generateValues()
         {
             values.Clear();
-            Random myRandom = new Random();
+            Random rand = new Random();
 
             for (int i = 0; i < 15; i++)
             {
-                values.Add(myRandom.Next(1, 100));
+                values.Add(rand.Next(1, 100));
             }
 
             return values;
         }
 
-
-        public int processPOP()
-        {
-           return algorithm.pop(values);
-
-        }
-        public void processPush(int val){
-
-            algorithm.push(values,val);
-        
-        }
-        public List<int> GetValuesList()
+        public List<int> getValues()
         {
             return values;
         }
-        public void removeFromList(int val)
+
+        public void processNextValue(int head)
         {
-            values.Remove(val);
+            switch (selected_algorithm)
+            {
+                case ALGORITHMS.FIFO:
+                    algorithm = new FIFO();
+                    break;
+
+                case ALGORITHMS.SSTF:
+                    algorithm = new SSTF(head);
+                    break;
+
+                case ALGORITHMS.CLOOK:
+                    algorithm = new CLOOK();
+                    break;
+
+                case ALGORITHMS.LOOK:
+                    algorithm = new LOOK();
+                    break;
+
+                case ALGORITHMS.SCAN:
+                    algorithm = new SCAN();
+                    break;
+
+                case ALGORITHMS.CSCAN:
+                    algorithm = new CSCAN();
+                    break;
+
+                case ALGORITHMS.NONE:
+                    throw new ArgumentException("Can't process elements with no selected algorithm.");
+                default:
+                    throw new ArgumentException("Unknown algorithms: " + selected_algorithm);
+            }
+
+            algorithm.process(values);
         }
 
-        public void setAlgorithm(IAlgorithm algorithm)
+        public void setAlgorithm(ALGORITHMS algorithm)
         {
-            this.algorithm = algorithm;
+            selected_algorithm = algorithm;
         }
     }
 }

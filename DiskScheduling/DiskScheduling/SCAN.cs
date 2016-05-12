@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DiskScheduling
 {
-    class SCAN
+    internal class SCAN : IAlgorithm
     {
+        public void process(List<int> data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

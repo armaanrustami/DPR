@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DiskScheduling
 {
-    class LOOK
+    internal class LOOK : IAlgorithm
     {
+        public void process(List<int> data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
