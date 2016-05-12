@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.Firstout = new System.Windows.Forms.TextBox();
@@ -35,9 +36,10 @@
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.startbtn = new System.Windows.Forms.Button();
             this.stopbtn = new System.Windows.Forms.Button();
-            this.radioButton4 = new System.Windows.Forms.RadioButton();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +55,7 @@
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(30, 58);
+            this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar1.Size = new System.Drawing.Size(45, 336);
@@ -112,24 +115,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // startbtn
-            // 
-            this.startbtn.Location = new System.Drawing.Point(387, 252);
-            this.startbtn.Name = "startbtn";
-            this.startbtn.Size = new System.Drawing.Size(75, 23);
-            this.startbtn.TabIndex = 7;
-            this.startbtn.Text = "Start";
-            this.startbtn.UseVisualStyleBackColor = true;
-            // 
-            // stopbtn
-            // 
-            this.stopbtn.Location = new System.Drawing.Point(387, 296);
-            this.stopbtn.Name = "stopbtn";
-            this.stopbtn.Size = new System.Drawing.Size(75, 23);
-            this.stopbtn.TabIndex = 8;
-            this.stopbtn.Text = "Stop";
-            this.stopbtn.UseVisualStyleBackColor = true;
-            // 
             // radioButton4
             // 
             this.radioButton4.AutoSize = true;
@@ -140,6 +125,32 @@
             this.radioButton4.TabStop = true;
             this.radioButton4.Text = "radioButton4";
             this.radioButton4.UseVisualStyleBackColor = true;
+            // 
+            // startbtn
+            // 
+            this.startbtn.Location = new System.Drawing.Point(387, 252);
+            this.startbtn.Name = "startbtn";
+            this.startbtn.Size = new System.Drawing.Size(75, 23);
+            this.startbtn.TabIndex = 7;
+            this.startbtn.Text = "Start";
+            this.startbtn.UseVisualStyleBackColor = true;
+            this.startbtn.Click += new System.EventHandler(this.startbtn_Click);
+            // 
+            // stopbtn
+            // 
+            this.stopbtn.Location = new System.Drawing.Point(387, 296);
+            this.stopbtn.Name = "stopbtn";
+            this.stopbtn.Size = new System.Drawing.Size(75, 23);
+            this.stopbtn.TabIndex = 8;
+            this.stopbtn.Text = "Stop";
+            this.stopbtn.UseVisualStyleBackColor = true;
+            this.stopbtn.Click += new System.EventHandler(this.stopbtn_Click);
+            // 
+            // timer1
+            // 
+            this.timer1.Enabled = true;
+            this.timer1.Interval = 25;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1
             // 
@@ -175,6 +186,7 @@
         private System.Windows.Forms.Button startbtn;
         private System.Windows.Forms.Button stopbtn;
         private System.Windows.Forms.RadioButton radioButton4;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

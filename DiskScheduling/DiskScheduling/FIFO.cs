@@ -8,14 +8,16 @@ namespace DiskScheduling
 {
     internal class FIFO : IAlgorithm
     {
-        public int pop()
+        public int pop(List<int> values)
         {
-            throw new NotImplementedException();
+
+            return values[0];
+
         }
 
-        public void push(int val)
+        public void push(List<int> values,int val)
         {
-            throw new NotImplementedException();
+            values.Add(val);
         }
     }
 }
