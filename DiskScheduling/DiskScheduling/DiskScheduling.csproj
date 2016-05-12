@@ -47,9 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLOOK.cs" />
-    <Compile Include="CSCAN.cs" />
-    <Compile Include="LOOK.cs" />
     <Compile Include="SCAN.cs" />
     <Compile Include="Scheduler.cs" />
     <Compile Include="FIFO.cs" />

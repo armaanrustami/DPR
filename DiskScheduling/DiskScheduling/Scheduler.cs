@@ -111,19 +111,6 @@ namespace DiskScheduling
                 case ALGORITHMS.SCAN:
                     algorithm = new SCAN(arguments);
                     break;
-
-                case ALGORITHMS.CLOOK:
-                    algorithm = new CLOOK();
-                    break;
-
-                case ALGORITHMS.LOOK:
-                    algorithm = new LOOK();
-                    break;
-
-                case ALGORITHMS.CSCAN:
-                    algorithm = new CSCAN();
-                    break;
-
                 case ALGORITHMS.NONE:
                     throw new ArgumentException("Can't process elements with no selected algorithm.");
                 default:
