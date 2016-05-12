@@ -10,7 +10,7 @@ namespace DiskScheduling
     {
         int pop(List<int>values);
 
-        void push(List<int>values,int val);
+        void push(List<int>values);
         
     }
 }

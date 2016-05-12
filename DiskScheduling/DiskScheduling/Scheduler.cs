@@ -29,6 +29,22 @@ namespace DiskScheduling
             return values;
         }
 
+
+        public int processPOP()
+        {
+           return algorithm.pop(values);
+
+        }
+        public void processPush(){
+
+            algorithm.push(values);
+        
+        }
+        public List<int> GetValuesList()
+        {
+            return values;
+        }
+
         public void setAlgorithm(IAlgorithm algorithm)
         {
             this.algorithm = algorithm;
