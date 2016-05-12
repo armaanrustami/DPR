@@ -14,6 +14,7 @@ namespace DiskScheduling
     {
         private Boolean IsRunning = false;
         private Scheduler scheduler;
+        private Scheduler.ALGORITHMS selected_algorithm;
 
         public UI()
         {
@@ -48,41 +49,53 @@ namespace DiskScheduling
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
-                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.FIFO);
+                selected_algorithm = Scheduler.ALGORITHMS.FIFO;
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
             {
-                scheduler.setStartingData(Convert.ToInt32(listBox1.Items[0]));
-                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.SSTF);
-                updateListBox();
+                selected_algorithm = Scheduler.ALGORITHMS.SSTF;
+                resort();
             }
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
-                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.LOOK);
+                selected_algorithm = Scheduler.ALGORITHMS.LOOK;
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
-                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.CLOOK);
+                selected_algorithm = Scheduler.ALGORITHMS.CLOOK;
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
-                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.SCAN);
+                selected_algorithm = Scheduler.ALGORITHMS.SCAN;
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
         {
             if (((RadioButton)sender).Checked)
-                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.CSCAN);
+                selected_algorithm = Scheduler.ALGORITHMS.CSCAN;
+        }
+
+        private void resort()
+        {
+            switch (selected_algorithm)
+            {
+                case Scheduler.ALGORITHMS.SSTF:
+                    scheduler.setStartingData(Convert.ToInt32(listBox1.Items[0]));
+                    break;
+            }
+
+            scheduler.sortByAlgorithm(selected_algorithm);
+            updateListBox();
         }
 
         private void startbtn_Click(object sender, EventArgs e)
@@ -114,8 +127,9 @@ namespace DiskScheduling
 
         private void updateForNextValue()
         {
-            scheduler.values.RemoveAt(0);
-            updateListBox();
+            scheduler.removeValue();
+            scheduler.generateValue();
+            resort();
         }
     }
 }

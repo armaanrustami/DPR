@@ -8,9 +8,10 @@ namespace DiskScheduling
 {
     internal class Scheduler
     {
-        public List<int> values = null;
         private IAlgorithm algorithm = null;
         private int head = 0;
+        private Random rand = new Random();
+        private List<int> values = null;
 
         public Scheduler()
         {
@@ -29,22 +30,29 @@ namespace DiskScheduling
             NONE
         };
 
-        public List<int> generateValues()
+        public void generateValue()
+        {
+            values.Add(rand.Next(1, 100));
+        }
+
+        public void generateValues()
         {
             values.Clear();
-            Random rand = new Random();
 
             for (int i = 0; i < 15; i++)
             {
                 values.Add(rand.Next(1, 100));
             }
-
-            return values;
         }
 
         public List<int> getValues()
         {
             return values;
+        }
+
+        public void removeValue()
+        {
+            values.RemoveAt(0);
         }
 
         public void setStartingData(int data)
