@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace DiskScheduling
 {
-    internal static class Main
+    internal static class MainProgram
     {
         /// <summary>
         /// The main entry point for the application.

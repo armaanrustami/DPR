@@ -57,7 +57,7 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="IAlgorithm.cs" />
-    <Compile Include="Main.cs" />
+    <Compile Include="MainProgram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SSFT.cs" />
     <EmbeddedResource Include="Form1.resx">

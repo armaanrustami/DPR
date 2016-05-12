@@ -15,7 +15,7 @@ namespace DiskScheduling
             return temp[0];
         }
 
-        public void push(List<int> values,int val)
+        public void push(List<int> values, int val)
         {
             values.Add(val);
         }

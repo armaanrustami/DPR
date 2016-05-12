@@ -35,9 +35,9 @@ namespace DiskScheduling
            return algorithm.pop(values);
 
         }
-        public void processPush(){
+        public void processPush(int val){
 
-            algorithm.push(values);
+            algorithm.push(values,val);
         
         }
         public List<int> GetValuesList()
