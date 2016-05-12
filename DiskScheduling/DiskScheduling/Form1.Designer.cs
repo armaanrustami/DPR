@@ -55,6 +55,7 @@
             // trackBar1
             // 
             this.trackBar1.Location = new System.Drawing.Point(30, 58);
+            this.trackBar1.Maximum = 100;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.Orientation = System.Windows.Forms.Orientation.Vertical;
             this.trackBar1.Size = new System.Drawing.Size(45, 336);
@@ -133,6 +134,7 @@
             this.startbtn.TabIndex = 7;
             this.startbtn.Text = "Start";
             this.startbtn.UseVisualStyleBackColor = true;
+            this.startbtn.Click += new System.EventHandler(this.startbtn_Click);
             // 
             // stopbtn
             // 
@@ -142,9 +144,11 @@
             this.stopbtn.TabIndex = 8;
             this.stopbtn.Text = "Stop";
             this.stopbtn.UseVisualStyleBackColor = true;
+            this.stopbtn.Click += new System.EventHandler(this.stopbtn_Click);
             // 
             // timer1
             // 
+            this.timer1.Enabled = true;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Form1

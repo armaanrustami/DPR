@@ -23,11 +23,12 @@ namespace DiskScheduling
             DS = new Scheduler();
             fifo = new FIFO();
             ssft = new SSFT();
+            DS.CreateProcess();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            listBox1.DataSource = DS.CreateProcess();
+            UpdateListBox();
         }
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
@@ -45,19 +46,11 @@ namespace DiskScheduling
                     DS.setAlgorithm(fifo);
                     UpdateListBox();
                     temp= DS.processPOP();
-                    
-
-
-
-                    
-                   
-
+                    Firstout.Text = temp.ToString();
+                    trackBar1.Value = temp;
+                    DS.removeFromList(temp);
+                    DS.processPush(temp);
                 }
-            
-            
-            
-            
-            
             
             }
         }
@@ -66,11 +59,22 @@ namespace DiskScheduling
         public void UpdateListBox()
         {
             listBox1.Items.Clear();
+             
             foreach (int item in DS.GetValuesList())
             {
                 listBox1.Items.Add(item);
             }
 
+        }
+
+        private void startbtn_Click(object sender, EventArgs e)
+        {
+            IsRunning = true;
+        }
+
+        private void stopbtn_Click(object sender, EventArgs e)
+        {
+            IsRunning = false;
         }
     }
 }

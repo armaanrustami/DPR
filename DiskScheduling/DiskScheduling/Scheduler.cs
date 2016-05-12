@@ -44,6 +44,10 @@ namespace DiskScheduling
         {
             return values;
         }
+        public void removeFromList(int val)
+        {
+            values.Remove(val);
+        }
 
         public void setAlgorithm(IAlgorithm algorithm)
         {
