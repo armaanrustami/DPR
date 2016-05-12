@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiskScheduling
 {
-    internal class FIFO : IAlgorithm
+    internal class SSFT : IAlgorithm
     {
         public int pop()
         {

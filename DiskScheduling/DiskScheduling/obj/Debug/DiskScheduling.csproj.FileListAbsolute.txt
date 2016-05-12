@@ -16,3 +16,6 @@ C:\Users\king\OneDrive\fontys\Block10\DPR\DPR\DiskScheduling\DiskScheduling\obj\
 C:\Users\king\OneDrive\fontys\Block10\DPR\DPR\DiskScheduling\DiskScheduling\obj\Debug\DiskScheduling.csproj.GenerateResource.Cache
 C:\Users\king\OneDrive\fontys\Block10\DPR\DPR\DiskScheduling\DiskScheduling\bin\Debug\DiskScheduling.exe
 C:\Users\king\OneDrive\fontys\Block10\DPR\DPR\DiskScheduling\DiskScheduling\bin\Debug\DiskScheduling.pdb
+C:\Users\ico\Documents\fontys\dpr\w1\DiskScheduling\DiskScheduling\bin\Debug\DiskScheduling.exe.config
+C:\Users\ico\Documents\fontys\dpr\w1\DiskScheduling\DiskScheduling\obj\Debug\DiskScheduling.exe
+C:\Users\ico\Documents\fontys\dpr\w1\DiskScheduling\DiskScheduling\obj\Debug\DiskScheduling.pdb

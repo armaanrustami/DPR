@@ -6,15 +6,7 @@ using System.Threading.Tasks;
 
 namespace DiskScheduling
 {
-    class SSTF :IAlgorithem
+    class CSCAN
     {
-        public int process(List<int> list, int value)
-        { 
-        ///todo
-
-            return 0;
-        }
-
-
     }
 }

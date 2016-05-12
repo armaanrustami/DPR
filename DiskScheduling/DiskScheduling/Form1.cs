@@ -12,17 +12,21 @@ namespace DiskScheduling
 {
     public partial class Form1 : Form
     {
-        Disk_Scheduling DS;
+        private Scheduler DS;
+
         public Form1()
         {
-            DS = new Disk_Scheduling();
+            DS = new Scheduler();
             InitializeComponent();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
             listBox1.DataSource = DS.CreateProcess();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
         }
     }
 }
