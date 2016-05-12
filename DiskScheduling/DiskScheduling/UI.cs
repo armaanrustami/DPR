@@ -87,10 +87,13 @@ namespace DiskScheduling
 
         private void resort()
         {
+            Firstout.Text = Convert.ToString(listBox1.Items[0]);
+            listBox1.Items.Remove(0);
+
             switch (selected_algorithm)
             {
                 case Scheduler.ALGORITHMS.SSTF:
-                    scheduler.setStartingData(Convert.ToInt32(listBox1.Items[0]));
+                    scheduler.setStartingData(Convert.ToInt32(Firstout.Text));
                     break;
             }
 
