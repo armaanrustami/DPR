@@ -8,6 +8,6 @@ namespace DiskScheduling
 {
     internal interface IAlgorithm
     {
-        void process(List<int> data);
+        void sort(List<int> data);
     }
 }

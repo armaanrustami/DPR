@@ -8,7 +8,7 @@ namespace DiskScheduling
 {
     internal class CLOOK : IAlgorithm
     {
-        public void process(List<int> data)
+        public void sort(List<int> data)
         {
             throw new NotImplementedException();
         }

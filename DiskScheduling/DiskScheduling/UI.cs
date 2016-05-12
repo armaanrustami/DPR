@@ -47,39 +47,47 @@ namespace DiskScheduling
 
         private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            scheduler.setAlgorithm(Scheduler.ALGORITHMS.FIFO);
+            if (((RadioButton)sender).Checked)
+                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.FIFO);
         }
 
         private void radioButton2_CheckedChanged(object sender, EventArgs e)
         {
-            scheduler.setAlgorithm(Scheduler.ALGORITHMS.SSTF);
+            if (((RadioButton)sender).Checked)
+            {
+                scheduler.setStartingData(Convert.ToInt32(listBox1.Items[0]));
+                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.SSTF);
+                updateListBox();
+            }
         }
 
         private void radioButton3_CheckedChanged(object sender, EventArgs e)
         {
-            scheduler.setAlgorithm(Scheduler.ALGORITHMS.LOOK);
+            if (((RadioButton)sender).Checked)
+                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.LOOK);
         }
 
         private void radioButton4_CheckedChanged(object sender, EventArgs e)
         {
-            scheduler.setAlgorithm(Scheduler.ALGORITHMS.CLOOK);
+            if (((RadioButton)sender).Checked)
+                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.CLOOK);
         }
 
         private void radioButton5_CheckedChanged(object sender, EventArgs e)
         {
-            scheduler.setAlgorithm(Scheduler.ALGORITHMS.SCAN);
+            if (((RadioButton)sender).Checked)
+                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.SCAN);
         }
 
         private void radioButton6_CheckedChanged(object sender, EventArgs e)
         {
-            scheduler.setAlgorithm(Scheduler.ALGORITHMS.CSCAN);
+            if (((RadioButton)sender).Checked)
+                scheduler.sortByAlgorithm(Scheduler.ALGORITHMS.CSCAN);
         }
 
         private void startbtn_Click(object sender, EventArgs e)
         {
             IsRunning = true;
-            scheduler.generateValues();
-            updateForNextValue();
         }
 
         private void stopbtn_Click(object sender, EventArgs e)
@@ -92,6 +100,7 @@ namespace DiskScheduling
             if (IsRunning)
             {
                 int val = Convert.ToInt32(listBox1.Items[0]);
+
                 if (trackBar1.Value != val)
                 {
                     updateTrackbar(val);
@@ -105,7 +114,7 @@ namespace DiskScheduling
 
         private void updateForNextValue()
         {
-            scheduler.processNextValue(Convert.ToInt32(listBox1.Items[0]));
+            scheduler.values.RemoveAt(0);
             updateListBox();
         }
     }

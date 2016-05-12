@@ -16,26 +16,15 @@ namespace DiskScheduling
             this.start = start;
         }
 
-        public void process(List<int> data)
+        public void sort(List<int> data)
         {
-            // easier than in-place
-            List<int> sorted = new List<int>();
-            sorted.Add(start);
-            data.Remove(start);
+            List<int> sorted = data.OrderBy(item => Math.Abs(start - item)).ToList();
+            data.Clear();
 
-            int next = 0;
-            int min = Math.Abs(data[0] - start);
-
-            for (int i = 0; i < data.Count; i++)
+            foreach (int i in sorted)
             {
-                next = Math.Abs(data[i] - start);
-                if (min < next)
-                {
-                    sorted.Add(data[i]);
-                }
+                data.Add(i);
             }
-
-            data = sorted;
         }
     }
 }

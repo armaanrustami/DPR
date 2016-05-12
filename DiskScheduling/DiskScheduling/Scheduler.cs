@@ -8,15 +8,14 @@ namespace DiskScheduling
 {
     internal class Scheduler
     {
+        public List<int> values = null;
         private IAlgorithm algorithm = null;
-        private ALGORITHMS selected_algorithm = ALGORITHMS.NONE;
-        private List<int> values = null;
+        private int head = 0;
 
         public Scheduler()
         {
             values = new List<int>();
             algorithm = new FIFO();
-            selected_algorithm = ALGORITHMS.FIFO;
         }
 
         public enum ALGORITHMS
@@ -48,7 +47,12 @@ namespace DiskScheduling
             return values;
         }
 
-        public void processNextValue(int head)
+        public void setStartingData(int data)
+        {
+            head = data;
+        }
+
+        public void sortByAlgorithm(ALGORITHMS selected_algorithm)
         {
             switch (selected_algorithm)
             {
@@ -82,12 +86,7 @@ namespace DiskScheduling
                     throw new ArgumentException("Unknown algorithms: " + selected_algorithm);
             }
 
-            algorithm.process(values);
-        }
-
-        public void setAlgorithm(ALGORITHMS algorithm)
-        {
-            selected_algorithm = algorithm;
+            algorithm.sort(values);
         }
     }
 }

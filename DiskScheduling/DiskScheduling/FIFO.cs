@@ -8,9 +8,9 @@ namespace DiskScheduling
 {
     internal class FIFO : IAlgorithm
     {
-        public void process(List<int> data)
+        public void sort(List<int> data)
         {
-            data.RemoveAt(0);
+            // nothing to sort
         }
     }
 }
