@@ -45,11 +45,16 @@ namespace DiskScheduling
                 {
                     DS.setAlgorithm(fifo);
                     UpdateListBox();
-                    temp= DS.processPOP();
+                    temp = DS.processPOP();
                     Firstout.Text = temp.ToString();
-                    trackBar1.Value = temp;
-                    DS.removeFromList(temp);
-                    DS.processPush(temp);
+                    if (trackBar1.Value >temp){
+                        trackBar1.Value--;}
+                    if (trackBar1.Value < temp){
+                        trackBar1.Value++;}
+                    if(trackBar1.Value==temp){
+                        DS.removeFromList(temp);
+                        DS.processPush(temp);
+                    }
                 }
             
             }
@@ -65,6 +70,16 @@ namespace DiskScheduling
                 listBox1.Items.Add(item);
             }
 
+        }
+
+        public void updateTrackbar(int val)
+        {
+            
+            if (trackBar1.Value > val)
+                trackBar1.Value--;
+             if (trackBar1.Value < val)
+                trackBar1.Value++;
+            
         }
 
         private void startbtn_Click(object sender, EventArgs e)
