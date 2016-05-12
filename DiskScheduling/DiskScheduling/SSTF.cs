@@ -11,9 +11,9 @@ namespace DiskScheduling
         // value to which to compare
         private int start = 0;
 
-        public SSTF(int start)
+        public SSTF(Dictionary<String, int> args)
         {
-            this.start = start;
+            start = args["start"];
         }
 
         public void sort(List<int> data)

@@ -9,6 +9,7 @@ namespace DiskScheduling
     internal class Scheduler
     {
         private IAlgorithm algorithm = null;
+        private Dictionary<String, int> arguments = null;
         private int head = 0;
         private Random rand = new Random();
         private List<int> values = null;
@@ -17,8 +18,12 @@ namespace DiskScheduling
         {
             values = new List<int>();
             algorithm = new FIFO();
+            arguments = new Dictionary<string, int>();
         }
 
+        /// <summary>
+        /// available algorithms
+        /// </summary>
         public enum ALGORITHMS
         {
             FIFO,
@@ -30,11 +35,17 @@ namespace DiskScheduling
             NONE
         };
 
+        /// <summary>
+        /// generates one new value in the list of values
+        /// </summary>
         public void generateValue()
         {
             values.Add(rand.Next(1, 100));
         }
 
+        /// <summary>
+        /// generates multiple values for the list of values
+        /// </summary>
         public void generateValues()
         {
             values.Clear();
@@ -45,21 +56,45 @@ namespace DiskScheduling
             }
         }
 
+        /// <summary>
+        /// returns the list of values
+        /// </summary>
+        /// <returns></returns>
         public List<int> getValues()
         {
             return values;
         }
 
+        /// <summary>
+        /// removes a single values from the list of values
+        /// </summary>
         public void removeValue()
         {
             values.RemoveAt(0);
         }
 
-        public void setStartingData(int data)
+        /// <summary>
+        /// sets the direction argument in the dictionary of arguments
+        /// </summary>
+        /// <param name="direction">-1 for down, 1 for up</param>
+        public void setDirection(int direction)
         {
-            head = data;
+            arguments["direction"] = direction;
         }
 
+        /// <summary>
+        /// sets the value of the element in the textbox in the dictionary of arguments
+        /// </summary>
+        /// <param name="data">the value in the textbox</param>
+        public void setStartingData(int data)
+        {
+            arguments["start"] = data;
+        }
+
+        /// <summary>
+        /// sort the list of values by some algorithms
+        /// </summary>
+        /// <param name="selected_algorithm">algorithms to sort by</param>
         public void sortByAlgorithm(ALGORITHMS selected_algorithm)
         {
             switch (selected_algorithm)
@@ -69,7 +104,11 @@ namespace DiskScheduling
                     break;
 
                 case ALGORITHMS.SSTF:
-                    algorithm = new SSTF(head);
+                    algorithm = new SSTF(arguments);
+                    break;
+
+                case ALGORITHMS.SCAN:
+                    algorithm = new SCAN(arguments);
                     break;
 
                 case ALGORITHMS.CLOOK:
@@ -78,10 +117,6 @@ namespace DiskScheduling
 
                 case ALGORITHMS.LOOK:
                     algorithm = new LOOK();
-                    break;
-
-                case ALGORITHMS.SCAN:
-                    algorithm = new SCAN();
                     break;
 
                 case ALGORITHMS.CSCAN:

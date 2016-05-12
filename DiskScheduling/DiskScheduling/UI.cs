@@ -23,6 +23,9 @@ namespace DiskScheduling
             scheduler.generateValues();
         }
 
+        /// <summary>
+        /// updates the listbox that shows the numbers
+        /// </summary>
         public void updateListBox()
         {
             listBox1.Items.Clear();
@@ -33,12 +36,22 @@ namespace DiskScheduling
             }
         }
 
+        /// <summary>
+        /// updates the trackbar to go to a new number
+        /// </summary>
+        /// <param name="val"></param>
         public void updateTrackbar(int val)
         {
             if (trackBar1.Value > val)
+            {
                 trackBar1.Value--;
+                scheduler.setDirection(-1);
+            }
             if (trackBar1.Value < val)
+            {
                 trackBar1.Value++;
+                scheduler.setDirection(1);
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -85,14 +98,21 @@ namespace DiskScheduling
                 selected_algorithm = Scheduler.ALGORITHMS.CSCAN;
         }
 
+        /// <summary>
+        /// called when a resort of the listbox should happen
+        /// </summary>
         private void resort()
         {
-            Firstout.Text = Convert.ToString(listBox1.Items[0]);
-            listBox1.Items.Remove(0);
+            updateFirstOut();
 
+            // get latest data needed for specific algorithms
             switch (selected_algorithm)
             {
                 case Scheduler.ALGORITHMS.SSTF:
+                    scheduler.setStartingData(Convert.ToInt32(Firstout.Text));
+                    break;
+
+                case Scheduler.ALGORITHMS.SCAN:
                     scheduler.setStartingData(Convert.ToInt32(Firstout.Text));
                     break;
             }
@@ -128,6 +148,18 @@ namespace DiskScheduling
             }
         }
 
+        /// <summary>
+        /// updates the small text over the listbox with the first value in the box
+        /// </summary>
+        private void updateFirstOut()
+        {
+            Firstout.Text = Convert.ToString(listBox1.Items[0]);
+            listBox1.Items.Remove(0);
+        }
+
+        /// <summary>
+        /// updates the listbox for the next tick
+        /// </summary>
         private void updateForNextValue()
         {
             scheduler.removeValue();
