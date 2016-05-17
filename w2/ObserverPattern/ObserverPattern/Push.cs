@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-    class Push: IObserver
+    internal class Push : IObserver
     {
+        public int Temperature { get; set; }
 
-      public  int Temperature{get;set;}
-
-        public void Update(float temp,float humidity,float pressure)
+        public void Update(float temp, float humidity, float pressure)
         {
-            
         }
     }
 }

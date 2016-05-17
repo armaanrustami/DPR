@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-    interface ISubject
+    internal interface ISubject
     {
-
+        void notify();
 
         void register(IObserver obj);
+
         void remove(IObserver obj);
-        void notify();
     }
 }

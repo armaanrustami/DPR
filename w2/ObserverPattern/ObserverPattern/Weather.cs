@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-    class Weather
+    internal class Weather
     {
+        private List<string> cities;
+        private string City;
         private List<ISubject> Observers;
-        List<string> cities;
-        int temperature;
-        string City;
+        private int temperature;
+
         public Weather()
         {
             Observers = new List<ISubject>();
@@ -20,29 +21,29 @@ namespace ObserverPattern
             cities.Add("NL");
             cities.Add("USA");
             cities.Add("UK");
-           
-        }
-        
-     public void  registedObserver(ISubject observer){
-
-         Observers.Add(observer);
-     }
-
-     public void removeObserver(ISubject observer) {
-         Observers.Remove(observer);
-     }
-
-      public void  notifyObservers(){
-
-      }
-       
-        public ISubject getState(){
-        return null;
-        }
-        public void setState(ISubject obj){
         }
 
+        public ISubject getState()
+        {
+            return null;
+        }
 
+        public void notifyObservers()
+        {
+        }
 
+        public void registedObserver(ISubject observer)
+        {
+            Observers.Add(observer);
+        }
+
+        public void removeObserver(ISubject observer)
+        {
+            Observers.Remove(observer);
+        }
+
+        public void setState(ISubject obj)
+        {
+        }
     }
 }
