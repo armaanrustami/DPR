@@ -6,24 +6,10 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-
-
-
-
-
-    class WeatherData : IWeather
-
+    internal class WeatherData : ISubject
     {
-        private List<IObserver> Observers;
         private List<string> Cities;
-        float Temperature { get; set; }
-        float Humidity { get; set; }
-        float Pressure { set; get; }
-        String City {get;set;}
-
-
-
-       
+        private List<IObserver> Observers;
 
         public WeatherData()
         {
@@ -36,57 +22,49 @@ namespace ObserverPattern
             Cities.Add("PL");
         }
 
-        public void notify(){
+        private String City { get; set; }
+        private float Humidity { get; set; }
+        private float Pressure { set; get; }
+        private float Temperature { get; set; }
+
+        public void GenerateRandom()
+        {
+            Random rand = new Random();
+            float temp = rand.Next(-20, 60);
+            float hum = rand.Next(1, 100);
+            float press = rand.Next(1, 100);
+            City = Cities[rand.Next(0, Cities.Count - 1)];
+            SetMeasurement(temp, hum, press);
+        }
+
+        public void notify()
+        {
             foreach (IObserver item in Observers)
             {
                 item.Update(Temperature, Humidity, Pressure);
             }
         }
 
-
         public void register(IObserver observer)
-
         {
-            Observers.Add(observer);
+            if (!Observers.Contains(observer)) Observers.Add(observer);
         }
-
-      
 
         public void remove(IObserver observer)
         {
-            Observers.Remove(observer);
+            if (Observers.Contains(observer)) Observers.Remove(observer);
         }
 
         public void SetMeasurement(float temp, float humidity, float pressure)
-        {      
-
+        {
             Temperature = temp;
             Humidity = humidity;
             Pressure = pressure;
-
         }
 
-
-    
-
-
-
-        public void GenerateRandom()
-        { 
-            Random rand=new Random();
-            float temp = rand.Next(-20, 60);
-            float hum = rand.Next(1, 100);
-            float press = rand.Next(1,100);
-            City = Cities[rand.Next(0, Cities.Count - 1)];
-            SetMeasurement(temp, hum, press);
-
-
-
-
-
-
+        public override string ToString()
+        {
+            return "WeatherData - " + Temperature + " : " + Humidity + " : " + Pressure;
         }
-
-
     }
 }

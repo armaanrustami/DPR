@@ -6,16 +6,11 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-
-    interface IWeather
+    internal class Website : Observer
     {
-
-
-            void notify();
-
-            void register(IObserver obj);
-
-            void remove(IObserver obj);
-        
+        public override string ToString()
+        {
+            return "Website - " + pressure;
+        }
     }
 }
