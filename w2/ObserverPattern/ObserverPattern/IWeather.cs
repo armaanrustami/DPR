@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace ObserverPattern
 {
-    internal interface ISubject
+
+    interface IWeather
+
     {
         void notify();
 

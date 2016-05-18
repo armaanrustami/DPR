@@ -13,8 +13,8 @@ namespace ObserverPattern
     public partial class Form1 : Form
     {
 
-        Weather weather;
-        ISubject iweather;
+       // Weather weather;
+        //IWeather iweather;
 
         public Form1()
         {
