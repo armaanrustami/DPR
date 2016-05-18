@@ -8,12 +8,14 @@ namespace ObserverPattern
 {
 
     interface IWeather
-
     {
-        void notify();
 
-        void register(IObserver obj);
 
-        void remove(IObserver obj);
+            void notify();
+
+            void register(IObserver obj);
+
+            void remove(IObserver obj);
+        
     }
 }

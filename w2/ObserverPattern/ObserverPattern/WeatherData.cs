@@ -8,17 +8,22 @@ namespace ObserverPattern
 {
 
 
+
+
+
     class WeatherData : IWeather
 
     {
         private List<IObserver> Observers;
         private List<string> Cities;
-
-
         float Temperature { get; set; }
         float Humidity { get; set; }
         float Pressure { set; get; }
         String City {get;set;}
+
+
+
+       
 
         public WeatherData()
         {
@@ -53,15 +58,17 @@ namespace ObserverPattern
         }
 
         public void SetMeasurement(float temp, float humidity, float pressure)
-        {
-
-        
+        {      
 
             Temperature = temp;
             Humidity = humidity;
             Pressure = pressure;
 
         }
+
+
+    
+
 
 
         public void GenerateRandom()
@@ -79,6 +86,7 @@ namespace ObserverPattern
 
 
         }
+
 
     }
 }

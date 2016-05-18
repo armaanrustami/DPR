@@ -12,15 +12,20 @@ namespace ObserverPattern
         float Temperature { get; set; }
         float Humidity { get; set; }
         float Pressure { set; get; }
-       
+
              
-        public void Update(float temp,float humidity,float pressure)
+      
+        String City { get; set; }
+             
+        public void Update(float temp,float humidity,float pressure )
+
         {
             Temperature = temp;
             Humidity = humidity;
             Pressure = pressure;
+
            
-        
+
         }
     }
 }
