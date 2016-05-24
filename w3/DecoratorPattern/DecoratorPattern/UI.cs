@@ -12,10 +12,10 @@ namespace DecoratorPattern
 {
 
     
-    public partial class Form1 : Form
+    public partial class UI : Form
     {
         IBeverage beverage;
-        public Form1()
+        public UI()
         {
             InitializeComponent();
             beverage = new Espresso();
