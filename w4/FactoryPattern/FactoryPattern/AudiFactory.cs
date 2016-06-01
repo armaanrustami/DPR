@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 namespace FactoryPattern
 {
-   public class AudiFactory : ICarFactory
+    public class AudiFactory : ICarFactory
     {
-       public ICarType CreateCar()
-       {
-           return new Audi();
-       }
+        public ICar CreateCar(ICar.TYPE type)
+        {
+            return new Audi(type);
+        }
+
+        public override string ToString()
+        {
+            return "AudiFactory";
+        }
     }
 }

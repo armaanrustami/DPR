@@ -6,25 +6,23 @@ using System.Threading.Tasks;
 
 namespace FactoryPattern
 {
-   public class Tesla : ICarType
+    public class Tesla : ICar
     {
-       
+        private ICar.TYPE type;
 
-           private List<string> car;
-           public List<string> ops;
-           public Tesla()
-           {
-               car = new List<string>();
-               car.Add("S");
-               car.Add("X");
-               car.Add("3");
-              
+        public Tesla(ICar.TYPE type)
+        {
+            this.type = type;
+        }
 
-           }
+        public override void honk()
+        {
+            Console.WriteLine("honk from tesla");
+        }
 
-
-
-       
-       }
-    
+        public override string ToString()
+        {
+            return "Tesla " + type.ToString();
+        }
+    }
 }

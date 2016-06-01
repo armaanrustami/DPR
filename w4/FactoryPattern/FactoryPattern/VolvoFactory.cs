@@ -8,9 +8,14 @@ namespace FactoryPattern
 {
     public class VolvoFactory : ICarFactory
     {
-        public ICarType CreateCar()
+        public ICar CreateCar(ICar.TYPE type)
         {
-            return new Volvo();
+            return new Volvo(type);
+        }
+
+        public override string ToString()
+        {
+            return "VolvoFactory";
         }
     }
 }

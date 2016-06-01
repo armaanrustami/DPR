@@ -6,16 +6,21 @@ using System.Threading.Tasks;
 
 namespace FactoryPattern
 {
-    public class TeslaFactory : ICarFactory
+    public abstract class ICar
     {
-        public ICar CreateCar(ICar.TYPE type)
+        public enum TYPE
         {
-            return new Tesla(type);
-        }
+            COMPACT = 0,
+            LIMOUSINE,
+            SUV,
+            HYBRID,
+        };
+
+        public abstract void honk();
 
         public override string ToString()
         {
-            return "TeslaFactory";
+            return "ICar";
         }
     }
 }

@@ -6,27 +6,24 @@ using System.Threading.Tasks;
 
 namespace FactoryPattern
 {
-   public class Volvo : ICarType
+    public class Volvo : ICar
     {
-      
+        private string model;
+        private ICar.TYPE type;
 
-           private List<string> car;
-           private List<string> ops;
-           public Volvo()
-           {
-               car = new List<string>();
-               car.Add("S60");
-               car.Add("V40");
-               car.Add("V60 T3");
-             
+        public Volvo(ICar.TYPE type)
+        {
+            this.type = type;
+        }
 
+        public override void honk()
+        {
+            Console.WriteLine("honk from volvo");
+        }
 
-
-           }
-
-
-
-         
-       }
-    
+        public override string ToString()
+        {
+            return "Volvo " + type.ToString();
+        }
+    }
 }

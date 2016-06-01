@@ -6,24 +6,23 @@ using System.Threading.Tasks;
 
 namespace FactoryPattern
 {
-   public class Audi : ICarType
+    public class Audi : ICar
     {
+        private ICar.TYPE type;
 
-        private List<string> car;
-  
-        public Audi()
+        public Audi(ICar.TYPE type)
         {
-            car = new List<string>();
-            car.Add("A9");
-            car.Add("Q5");
-            car.Add("A4");
-         
-
-       
-            
+            this.type = type;
         }
 
+        public override void honk()
+        {
+            Console.WriteLine("honk from audi");
+        }
 
-      
+        public override string ToString()
+        {
+            return "Audi " + type.ToString();
+        }
     }
 }

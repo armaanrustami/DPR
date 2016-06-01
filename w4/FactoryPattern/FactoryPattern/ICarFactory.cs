@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace FactoryPattern
 {
-   public interface ICarFactory
+    public interface ICarFactory
     {
-      ICarType CreateCar();
+        ICar CreateCar(ICar.TYPE type);
     }
 }
