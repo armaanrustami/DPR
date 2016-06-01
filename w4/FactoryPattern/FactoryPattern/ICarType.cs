@@ -8,6 +8,6 @@ namespace FactoryPattern
 {
     public interface ICarType
     {
-        string CarSpec();
+        
     }
 }

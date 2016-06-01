@@ -10,37 +10,20 @@ namespace FactoryPattern
     {
 
         private List<string> car;
-        private List<string> ops;
+  
         public Audi()
         {
             car = new List<string>();
-            car.Add("Compact");
-            car.Add("Hybrid");
-            car.Add("Limosine");
-            car.Add("SUV");
-            car.Add("Estate");
+            car.Add("A9");
+            car.Add("Q5");
+            car.Add("A4");
+         
 
-            ops = new List<string>();
-            ops.Add("Drive");
-            ops.Add("Wash");
-            ops.Add("Maintenance");
-
+       
             
         }
 
 
-
-        public string CarSpec()
-        {
-          Random random = new Random();
-          int  c = random.Next() % 4;
-          int  o  = random.Next() % 3;
-
-          string cr = car.ElementAt<string>(c);
-          string op  = ops.ElementAt<string>(o);
-
-          return cr + " , " + op;
-         
-        }
+      
     }
 }
