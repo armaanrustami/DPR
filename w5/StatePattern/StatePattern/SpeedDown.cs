@@ -1,23 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StatePattern
+﻿namespace StatePattern
 {
-    class SpeedDown:State
+    internal class SpeedDown : State
     {
-        int speed;
-        public void doAction(Controller control)
+        private int speed;
+
+        public override void doAction(Controller control)
         {
-            speed=--control.Speed;
+            speed = --control.Speed;
         }
+
         public override string ToString()
         {
-
             return "Speed downed to " + speed;
         }
-
     }
 }

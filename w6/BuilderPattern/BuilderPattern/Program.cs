@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace StatePattern
+namespace BuilderPattern
 {
     internal static class Program
     {
@@ -13,7 +13,7 @@ namespace StatePattern
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI());
+            Application.Run(new Form1());
         }
     }
 }

@@ -1,17 +1,15 @@
 ﻿namespace StatePattern
 {
-    internal class SpeedUp : State
+    public class OFF : State
     {
-        private int speed;
-
         public override void doAction(Controller control)
         {
-            speed = ++control.Speed;
+            control.currentstate = false;
         }
 
         public override string ToString()
         {
-            return "Speed upped to " + speed;
+            return "Car stopped";
         }
     }
 }

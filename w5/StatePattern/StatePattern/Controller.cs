@@ -1,24 +1,25 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StatePattern
+﻿namespace StatePattern
 {
-   public class Controller
+    public class Controller
     {
-        private State state;
-        public int Speed{get;set;}
         public bool currentstate;
-             
+        private State state;
+
         public Controller()
         {
             state = null;
         }
 
-        public void setState(State state) { this.state = state; }
-        public State getState() { return state; }
+        public int Speed { get; set; }
+
+        public State getState()
+        {
+            return state;
+        }
+
+        public void setState(State state)
+        {
+            this.state = state;
+        }
     }
 }

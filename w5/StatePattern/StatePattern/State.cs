@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace StatePattern
+﻿namespace StatePattern
 {
-  public  interface State
+    public abstract class State
     {
-      
-        void doAction(Controller control);
+    public  abstract  void doAction(Controller control);
     }
 }
