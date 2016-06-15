@@ -12,63 +12,93 @@ namespace BuilderPattern
 {
     public partial class UI : Form
     {
-        private AppleBuilder applebuild;
         private Brand brand;
-        private bool currentB;
-        private SamsungBuilder sambuild;
+        private BRANDS current_brand;
 
         public UI()
         {
             InitializeComponent();
-            applebuild = new AppleBuilder();
-            sambuild = new SamsungBuilder();
         }
 
-        public void update()
+        private enum BRANDS
         {
-            listBox1.Items.Clear();
-
-            foreach (ISmartPhone item in brand.getPhones())
-            {
-                listBox1.Items.Add(item);
-            }
+            APPLE,
+            SAMSUNG,
+            NONE,
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
-            if (comboBox1.Text == "Apple")
+            switch (comboBox1.Text)
             {
-                currentB = false;
-                brand = applebuild.Built();
-                listBox1.Items.Clear();
-                foreach (ISmartPhone item in brand.getPhones())
-                {
-                    listBox1.Items.Add(item);
-                }
+                case "Apple":
+                    current_brand = BRANDS.APPLE;
+                    brand = new AppleBuilder().Built();
+                    break;
+
+                case "Samsung":
+                    current_brand = BRANDS.SAMSUNG;
+                    brand = new SamsungBuilder().Built();
+                    break;
+
+                default:
+                    current_brand = BRANDS.NONE;
+                    return;
             }
-            else
-            {
-                brand = sambuild.Built();
-                foreach (Samsung item in brand.getPhones())
-                {
-                    listBox1.Items.Add(item);
-                }
-                currentB = true;
-            }
+            update(brand.getPhones(), listBox1);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (currentB) { sambuild.removeItem((ISmartPhone)listBox1.SelectedItem); }
-            else applebuild.removeItem((ISmartPhone)listBox1.SelectedItem);
-            update();
+            if (brand == null) return;
+
+            switch (current_brand)
+            {
+                case BRANDS.APPLE:
+                    brand.removeItem((ISmartPhone)listBox1.SelectedItem);
+                    break;
+
+                case BRANDS.SAMSUNG:
+                    brand.removeItem((ISmartPhone)listBox1.SelectedItem);
+                    break;
+
+                default:
+                    return;
+            }
+            update(brand.getPhones(), listBox1);
+            label2.Text = "";
         }
 
         private void listBox1_Click(object sender, EventArgs e)
         {
-            if (currentB) { label2.Text = sambuild.getInfo((ISmartPhone)listBox1.SelectedItem); }
-            else label2.Text = applebuild.getInfo((ISmartPhone)listBox1.SelectedItem);
+            switch (current_brand)
+            {
+                case BRANDS.APPLE:
+                    label2.Text = AppleBuilder.getInfo((ISmartPhone)listBox1.SelectedItem);
+                    break;
+
+                case BRANDS.SAMSUNG:
+                    label2.Text = SamsungBuilder.getInfo((ISmartPhone)listBox1.SelectedItem);
+                    break;
+
+                default:
+                    return;
+            }
+        }
+
+        /// <summary>
+        /// Updates the data of a list.
+        /// </summary>
+        /// <typeparam name="T">Type of data</typeparam>
+        /// <param name="data">List containing elements of type T</param>
+        /// <param name="box">The listbox to update</param>
+        private void update<T>(List<T> data, ListBox box)
+        {
+            box.Items.Clear();
+            foreach (T val in data)
+            {
+                listBox1.Items.Add(val);
+            }
         }
     }
 }

@@ -10,6 +10,13 @@ namespace BuilderPattern
     {
         private Brand brand = new Brand();
 
+        public static string getInfo(ISmartPhone item)
+        {
+            if (item != null)
+                return "Samsung S7Edge " + item.Model() + "Color " + item.Color() + " IMEI NO: " + item.IMEI + " Price " + item.Price();
+            return "please select an item";
+        }
+
         public Brand Built()
         {
             brand.add(new SamsungS7Edge("736279e37", "Gray", 642));
@@ -17,13 +24,6 @@ namespace BuilderPattern
             brand.add(new SamsungS7Edge("736277837", "Silver", 700));
             brand.add(new SamsungS7Edge("523wfse45", "White", 800));
             return brand;
-        }
-
-        public String getInfo(ISmartPhone item)
-        {
-            if (item != null)
-                return "Samsung S7Edge " + item.Model() + "Color " + item.Color() + " IMEI NO: " + item.IMEI + " Price " + item.Price();
-            return "please select an item";
         }
 
         public void removeItem(ISmartPhone item)
