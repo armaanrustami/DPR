@@ -16,6 +16,10 @@ namespace BuilderPattern
         {
             return smartPhone;
         }
-        public void removeItem(ISmartPhone item) { smartPhone.Remove(item); }
+
+        public void removeItem(ISmartPhone item)
+        {
+            smartPhone.Remove(item);
+        }
     }
 }

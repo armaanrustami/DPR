@@ -5,8 +5,9 @@ namespace BuilderPattern
     internal class IPhone6s : Apple
     {
         private String Imei, color;
-        decimal price;
-        public IPhone6s(String imei,string color,decimal price)
+        private decimal price;
+
+        public IPhone6s(String imei, string color, decimal price)
         {
             this.color = color;
             this.Imei = imei;
@@ -15,8 +16,13 @@ namespace BuilderPattern
 
         public override string IMEI
         {
-            get { return Imei;   }
-            set{  value = Imei; }
+            get { return Imei; }
+            set { value = Imei; }
+        }
+
+        public override string Color()
+        {
+            return color;
         }
 
         public override string Model()
@@ -29,10 +35,6 @@ namespace BuilderPattern
             return price;
         }
 
-        public override string Color()
-        {
-            return color;
-        }
         public override string ToString()
         {
             return "IPhone 6S Price " + Price();

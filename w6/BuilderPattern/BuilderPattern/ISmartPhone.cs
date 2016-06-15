@@ -6,9 +6,10 @@ namespace BuilderPattern
     {
         String IMEI { get; set; }
 
+        String Color();
+
         String Model();
 
         decimal Price();
-        String Color();
     }
 }
