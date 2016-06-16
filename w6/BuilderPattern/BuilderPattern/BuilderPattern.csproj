@@ -59,9 +59,6 @@
     <Compile Include="Samsung.cs" />
     <Compile Include="SamsungBuilder.cs" />
     <Compile Include="SamsungS7Edge.cs" />
-    <Compile Include="Status\IStatus.cs" />
-    <Compile Include="Status\New.cs" />
-    <Compile Include="Status\Used.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="UI.resx">
