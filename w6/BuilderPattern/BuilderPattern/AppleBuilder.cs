@@ -1,35 +1,58 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace BuilderPattern
 {
-    internal class AppleBuilder
+    internal class AppleBuilder : IBuilder
     {
-        private Brand brand = new Brand();
+        private string factory_name = "apple";
 
-        public static string getInfo(ISmartPhone item)
+        private SmartPhone phone;
+
+        public AppleBuilder()
         {
-            if (item != null)
-                return "Iphone  " + item.Model() + "Color " + item.Color() + " IMEI NO: " + item.IMEI + " Price " + item.Price();
-            return "Please selct An item";
+            Name = "iPhone ";
+            Color = "black";
+            Price = 10;
         }
 
-        public Brand Built()
+        public void buildGold(bool toggle)
         {
-            brand.add(new IPhone6sPlus("736279e37", "Gray", 658));
-            brand.add(new IPhone6sPlus("736276d7", "Gold", 359));
-            brand.add(new IPhone6s("736277837", "Silver", 756));
-            brand.add(new IPhone6s("523wfse45", "White", 456));
-            return brand;
+            HasGold = toggle;
+            Price += 15;
         }
 
-        public List<ISmartPhone> getItems()
+        public void buildNFC(bool toggle)
         {
-            return brand.getPhones();
+            HasNFC = toggle;
+            Price += 5;
         }
 
-        public void removeItem(ISmartPhone item)
+        public void buildScreen(bool toggle)
         {
-            brand.removeItem(item);
+            HasScreen = toggle;
+            Price += 2;
+        }
+
+        public void buildSpeaker(bool toggle)
+        {
+            HasSpeaker = toggle;
+            Price += 23;
+        }
+
+        public void buildWifi(bool toggle)
+        {
+            HasWifi = toggle;
+        }
+
+        public String getName()
+        {
+            return factory_name;
+        }
+
+        public SmartPhone getPhone()
+        {
+            return new SmartPhone(;
         }
     }
 }

@@ -44,21 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Apple.cs" />
-    <Compile Include="Brand.cs" />
     <Compile Include="AppleBuilder.cs" />
+    <Compile Include="IBuilder.cs" />
+    <Compile Include="SmartPhone.cs" />
     <Compile Include="UI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI.Designer.cs">
       <DependentUpon>UI.cs</DependentUpon>
     </Compile>
-    <Compile Include="IPhone6sPlus.cs" />
-    <Compile Include="IPhone6s.cs" />
-    <Compile Include="ISmartPhone.cs" />
-    <Compile Include="Samsung.cs" />
     <Compile Include="SamsungBuilder.cs" />
+<<<<<<< Updated upstream
     <Compile Include="SamsungS7Edge.cs" />
+=======
+    <Compile Include="Status\IStatus.cs" />
+    <Compile Include="Status\New.cs" />
+    <Compile Include="Status\Used.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="UI.resx">

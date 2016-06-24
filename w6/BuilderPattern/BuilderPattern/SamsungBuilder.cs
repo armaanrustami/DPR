@@ -1,34 +1,59 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BuilderPattern
 {
-    internal class SamsungBuilder
+    internal class SamsungBuilder : IBuilder
     {
-        private Brand brand = new Brand();
+        private string name = "samsung";
+        private SmartPhone phone;
 
-        public static string getInfo(ISmartPhone item)
+        public SamsungBuilder()
         {
-            if (item != null)
-                return "Samsung S7Edge " + item.Model() + "Color " + item.Color() + " IMEI NO: " + item.IMEI + " Price " + item.Price();
-            return "please select an item";
+            phone = new SmartPhone();
+            phone.Name = "Galaxy ";
+            phone.Color = "yellow";
+            phone.Price = 15;
         }
 
-        public Brand Built()
+        public void buildGold(bool toggle)
         {
-            brand.add(new SamsungS7Edge("736279e37", "Gray", 642));
-            brand.add(new SamsungS7Edge("736276d7", "Gold", 464));
-            brand.add(new SamsungS7Edge("736277837", "Silver", 700));
-            brand.add(new SamsungS7Edge("523wfse45", "White", 800));
-            return brand;
+            phone.HasGold = toggle;
+            phone.Price += 10;
         }
 
-        public void removeItem(ISmartPhone item)
+        public void buildNFC(bool toggle)
         {
-            brand.removeItem(item);
+            phone.HasNFC = toggle;
+            phone.Price += 3;
+        }
+
+        public void buildScreen(bool toggle)
+        {
+            phone.HasScreen = toggle;
+            phone.Price += 7;
+        }
+
+        public void buildSpeaker(bool toggle)
+        {
+            phone.HasSpeaker = toggle;
+            phone.Price += 9;
+        }
+
+        public void buildWifi(bool toggle)
+        {
+            phone.HasWifi = toggle;
+            phone.Price += 13;
+        }
+
+        public String getName()
+        {
+            return name;
+        }
+
+        public SmartPhone getPhone()
+        {
+            return phone;
         }
     }
 }

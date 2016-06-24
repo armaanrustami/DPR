@@ -12,78 +12,85 @@ namespace BuilderPattern
 {
     public partial class UI : Form
     {
-        private Brand brand;
-        private BRANDS current_brand;
+        private List<IBuilder> builders;
+        private List<SmartPhone> phones;
 
         public UI()
         {
             InitializeComponent();
+            phones = new List<SmartPhone>();
+            builders = new List<IBuilder>();
+            builders.Add(new AppleBuilder());
+            builders.Add(new SamsungBuilder());
         }
 
-        private enum BRANDS
+        private enum BUILDERS
         {
-            APPLE,
-            SAMSUNG,
+            APPLE = 0,
+            SAMSUNG = 1,
             NONE,
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            switch (comboBox1.Text)
-            {
-                case "Apple":
-                    current_brand = BRANDS.APPLE;
-                    brand = new AppleBuilder().Built();
-                    break;
-
-                case "Samsung":
-                    current_brand = BRANDS.SAMSUNG;
-                    brand = new SamsungBuilder().Built();
-                    break;
-
-                default:
-                    current_brand = BRANDS.NONE;
-                    return;
-            }
-            update(brand.getPhones(), listBox1);
+            IBuilder builder = getBuilder(getSelectedBuilder());
+            phones.Add(builder.getPhone());
+            update(phones, listBox1);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (brand == null) return;
+            if (listBox1.SelectedItem == null) return;
 
-            switch (current_brand)
+            phones.Remove((SmartPhone)listBox1.SelectedItem);
+            update(phones, listBox1);
+            label2.Text = "";
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            IBuilder builder = getBuilder(getSelectedBuilder());
+            builder.buildGold(((CheckBox)sender).Checked);
+        }
+
+        private IBuilder getBuilder(BUILDERS builder)
+        {
+            switch (builder)
             {
-                case BRANDS.APPLE:
-                    brand.removeItem((ISmartPhone)listBox1.SelectedItem);
-                    break;
+                case BUILDERS.APPLE:
+                    return builders[0];
 
-                case BRANDS.SAMSUNG:
-                    brand.removeItem((ISmartPhone)listBox1.SelectedItem);
-                    break;
+                case BUILDERS.SAMSUNG:
+                    return builders[1];
+
+                case BUILDERS.NONE:
+                    return builders[0]; // default
 
                 default:
-                    return;
+                    throw new ArgumentException("invalid builder");
             }
-            update(brand.getPhones(), listBox1);
-            label2.Text = "";
+        }
+
+        private BUILDERS getSelectedBuilder()
+        {
+            switch (comboBox1.Text)
+            {
+                case "Apple":
+                    return BUILDERS.APPLE;
+
+                case "Samsung":
+                    return BUILDERS.SAMSUNG;
+
+                default:
+                    return BUILDERS.NONE;
+            }
         }
 
         private void listBox1_Click(object sender, EventArgs e)
         {
-            switch (current_brand)
-            {
-                case BRANDS.APPLE:
-                    label2.Text = AppleBuilder.getInfo((ISmartPhone)listBox1.SelectedItem);
-                    break;
+            if (listBox1.SelectedItem == null) return;
 
-                case BRANDS.SAMSUNG:
-                    label2.Text = SamsungBuilder.getInfo((ISmartPhone)listBox1.SelectedItem);
-                    break;
-
-                default:
-                    return;
-            }
+            label2.Text = ((SmartPhone)listBox1.SelectedItem).getInfo();
         }
 
         /// <summary>
